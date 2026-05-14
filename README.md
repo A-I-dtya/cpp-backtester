@@ -1,1 +1,1 @@
-A simple C++ backtester for OHLCV stock data :)
+A simple C++ backtester for OHLCV stock data 
