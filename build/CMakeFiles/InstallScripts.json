@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"E:/cpp-backtester/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
