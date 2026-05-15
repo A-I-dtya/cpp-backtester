@@ -1,3 +1,0 @@
-E:/cpp-backtester/build/CMakeFiles/backtester.dir
-E:/cpp-backtester/build/CMakeFiles/edit_cache.dir
-E:/cpp-backtester/build/CMakeFiles/rebuild_cache.dir
