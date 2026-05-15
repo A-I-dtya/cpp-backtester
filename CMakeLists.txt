@@ -21,10 +21,16 @@ add_executable(backtester
     src/Strategy.hpp
     src/Portfolio.hpp
     src/Engine.hpp
+    src/Metrics.hpp
     src/CsvReader.hpp
+    src/CliArgs.hpp
+    src/EquityCurveWriter.hpp
+    src/indicators/SimpleMovingAverage.hpp
     src/strategies/DoNothingStrategy.hpp
-    src/strategies/BuyAndHold.hpp
+    src/strategies/BuyAndHoldStrategy.hpp
+    src/strategies/SmaCrossoverStrategy.hpp
 )
+
 
 target_compile_options(backtester PRIVATE
     -Wall -Wextra -Wpedantic

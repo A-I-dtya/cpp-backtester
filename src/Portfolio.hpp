@@ -1,26 +1,49 @@
 #pragma once
 
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
-class Portfolio {
+class Portfolio
+{
 public:
     explicit Portfolio(double starting_cash)
-        :cash_(starting_cash), starting_cash_(starting_cash){}
+        : cash_(starting_cash), starting_cash_(starting_cash) {}
 
-    double cash() const{return cash_;}
+    double cash() const { return cash_; }
 
-    int position(const std::string& symbol)const{
+    int position(const std::string &symbol) const
+    {
         auto it = positions_.find(symbol);
-        return (it == positions_.end())? 0:it->second;
+        return (it == positions_.end()) ? 0 : it->second;
     }
 
-    void apply_fill(const std::string& symbol, int qty, double price){
-        cash_ -= qty*price;
+    bool apply_fill(const std::string &symbol, int qty, double price)
+    {
+        if (qty > 0)
+        {
+            const double cost = qty * price;
+            if (cost > cash_)
+                return false;
+        }
+        else if (qty < 0)
+        {
+
+            if (position(symbol) < -qty)
+                return false;
+        }
+        else
+        {
+            // Zero-qty orders are malformed.
+            return false;
+        }
+
+        cash_ -= qty * price;
         positions_[symbol] += qty;
+        return true;
     }
 
-    double equity(const std::string &symbol, double mark_price) const {
+    double equity(const std::string &symbol, double mark_price) const
+    {
         return cash_ + position(symbol) * mark_price;
     }
 
