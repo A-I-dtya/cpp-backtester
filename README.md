@@ -70,30 +70,6 @@ The engine is decomposed into orthogonal components so any one can be swapped wi
 
 Engine correctness is verified arithmetically against a known result before any strategy is evaluated. For a buy-and-hold of 100 shares at the day-1 open, expected final equity is `starting_cash − 100 × open[1] + 100 × close[last]`, and the engine's output matches this to the cent. Metrics are cross-checked against external references: AAPL's historical CAGR (~21%), drawdown peaks (1987, 2000–2003, 2008, 2022), and reasonable Sharpe ranges for long-only single-stock strategies (0.4–0.8).
 
-## Project layout
-
-cpp-backtester/
-├── CMakeLists.txt
-├── data/
-│   └── AAPL.csv                    # Daily split-adjusted OHLCV (Stooq)
-└── src/
-├── main.cpp
-├── CliArgs.hpp
-├── Bar.hpp
-├── Order.hpp
-├── Strategy.hpp
-├── Portfolio.hpp
-├── Engine.hpp
-├── CsvReader.hpp
-├── EquityCurveWriter.hpp
-├── Metrics.hpp
-├── indicators/
-│   └── SimpleMovingAverage.hpp
-└── strategies/
-├── DoNothingStrategy.hpp
-├── BuyAndHoldStrategy.hpp
-└── SmaCrossoverStrategy.hpp
-
 ## Future work
 
 - Unit tests with GoogleTest (Portfolio edge cases, Metrics formulas, SMA invariants)
